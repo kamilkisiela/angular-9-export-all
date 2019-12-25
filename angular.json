@@ -119,6 +119,46 @@
           }
         }
       }
+    },
+    "apollo-angular": {
+      "projectType": "library",
+      "root": "projects/apollo-angular",
+      "sourceRoot": "projects/apollo-angular/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/apollo-angular/tsconfig.lib.json",
+            "project": "projects/apollo-angular/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/apollo-angular/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/apollo-angular/src/test.ts",
+            "tsConfig": "projects/apollo-angular/tsconfig.spec.json",
+            "karmaConfig": "projects/apollo-angular/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/apollo-angular/tsconfig.lib.json",
+              "projects/apollo-angular/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "ng-lib-export"
 }
